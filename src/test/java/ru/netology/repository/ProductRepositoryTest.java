@@ -101,4 +101,19 @@ public class ProductRepositoryTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldSaveSmartphoneAndBookRemoteSmartphoneWithId55() {
+
+        ProductRepository repo = new ProductRepository();
+
+        repo.save(book2);
+        repo.save(book3);
+        repo.save(smartphone2);
+        repo.save(smartphone3);
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.remoteById(55);
+        });
+    }
 }
